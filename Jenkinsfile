@@ -10,7 +10,6 @@ pipeline {
                     app = docker.build("$DOCKER_HUB/lacework-cli")
                     app.inside {
                         sh 'lacework --help'
-                        sh 'lacework vulnerability container list-assessments'
                     }
                 }
             }
@@ -41,7 +40,7 @@ pipeline {
             steps {
                 echo 'Running Lacework vulnerability scan'
                 // sh "lacework vulnerability scan run index.docker.io $DOCKER_HUB/lacework-cli latest --poll --noninteractive --details"
-                sh "lacework vulnerability container scan index.docker.io ldmarinov/lacework-cli latest"
+                sh "lacework vulnerability container scan index.docker.io $DOCKER_HUB/lacework-cli latest --poll --details"
             }
         }
     }
