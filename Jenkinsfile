@@ -10,6 +10,7 @@ pipeline {
                     app = docker.build("$DOCKER_HUB/lacework-cli")
                     app.inside {
                         sh 'lacework --help'
+                        sh 'lacework vulnerability container list-assessments'
                     }
                 }
             }
