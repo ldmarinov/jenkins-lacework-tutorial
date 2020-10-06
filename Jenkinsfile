@@ -32,7 +32,8 @@ pipeline {
                 LW_API_SECRET = credentials('lacework_api_secret')
             }
             agent {
-                docker { image 'techallylw/lacework-cli:latest' }
+                // docker { image 'techallylw/lacework-cli:latest' }
+                docker { image 'ldmarinov/lacework-cli:latest' }
             }
             when {
                 branch 'master'
